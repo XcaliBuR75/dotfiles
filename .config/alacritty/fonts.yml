@@ -1,0 +1,29 @@
+# Font configuration
+
+font:
+  
+  normal:
+    family: "Liga SFMono Nerd Font"
+    style: Medium
+
+  bold:
+    family: "Liga SFMono Nerd Font"
+    style: Bold
+
+  italic:
+    family: "Liga SFMono Nerd Font"
+    style: Italic
+
+  bold_italic:
+    family: "Liga SFMono Nerd Font"
+    style: Bold Italic
+
+  # Point size
+  size: 16.0
+
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
