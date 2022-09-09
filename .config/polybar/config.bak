@@ -1,0 +1,391 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #bb1E2127
+background-opaque = #cf1E2127
+background2 = #2e2e2e
+background-alt = #444
+
+foreground = #dfdfdf
+foreground-alt = #555
+
+primary = #2972A7
+primary2 = #2D74B6
+primary-dark = #205281
+
+alert = #e06c75
+
+secondary = #e60053
+offwhite = #D6DAE0
+
+onedark-blue = #61afef
+onedark-green = #98c379
+onedark-red = #e06c75
+onedark-yellow = #e5c07b
+onedark-magenta = #c678dd
+onedark-cyan = #56b6c2
+
+mlm-1 = #34BB9D
+mlm-2 = #A0D6BC
+mlm-3 = #E0E0E0
+mlm-4 = #88AED5
+mlm-5 = #7243BE
+
+[bar/mybar]
+enable-ipc = true
+width = 100%
+;width = 1350
+;height = 24
+radius = 12
+offset-x = 8
+offset-y = 5
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = ${colors.background}
+
+padding-left = 5
+padding-right = 5
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = roboto mono medium:pixelsize=9;2
+font-1 = unifont:fontformat=truetype:size=6:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = "Jetbrains Mono ExtraBold:pixelsize=6;3"
+font-4 = "Roboto Mono SemiBold:pixelsize=11;2"
+font-5 = "Roboto Condensed Bold:pixelsize=11;2"
+font-6 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
+font-7 = "Fira Code Medium:pixelsize=10;3"
+font-8 = "Fira Code Semibold:pixelsize=10;3"
+font-9 = "Symbols Nerd Font:pixelsize=15:antialias=true;4"
+font-10 = "JetBrains Mono SemiBold:pixelsize=9;3"
+font-11 = "JetBrainsMono Nerd Font Mono:pixelsize=21:antialias=true;5"
+font-12 = "Open Sans ExtraBold:pixelsize=11;3"
+font-13 = "Open Sans Extrabold:pixelsize=12;1"
+
+modules-left = bspwm i3 traysep
+modules-center = date
+modules-right = sep1 pulseaudio sep3 filesystem sep4 network sep5 date2 sep6 power
+;modules-right = sep3 filesystem sep4 network sep5 date2 sep6 power
+
+tray-position = left
+tray-detached = true
+tray-offset-x = 202
+
+wm-restack = bspwm
+override-redirect = true
+
+;cursor-click = pointer
+;cursor-scroll = ns-resize
+
+[module/sep1]
+type = custom/text
+
+content = 
+content-foreground = ${colors.mlm-1}
+
+[module/sep2]
+type = custom/text
+
+content = 
+content-background = ${colors.mlm-1}
+content-foreground = ${colors.mlm-2}
+
+[module/sep3]
+type = custom/text
+
+content = 
+content-foreground = ${colors.onedark-red}
+content-background = ${colors.mlm-1}
+
+[module/sep4]
+type = custom/text
+
+content = 
+content-background = ${colors.onedark-red}
+content-foreground = ${colors.onedark-yellow}
+
+[module/sep5]
+type = custom/text
+
+content = 
+content-background = ${colors.onedark-yellow}
+content-foreground = ${colors.onedark-magenta}
+
+[module/sep6]
+type = custom/text
+
+content = 
+content-foreground = ${colors.onedark-green}
+
+[module/traysep]
+type = custom/text
+
+content = ::
+content-foreground = #606A7D
+content-font = 14
+
+[module/network]
+type = internal/network
+interface = ens33
+;interface = wlp2s0
+
+interval = 5.0
+
+format-connected-prefix = "直"
+format-disconnected-prefix = "睊"
+
+label-connected-font = 8
+format-connected-background = ${colors.onedark-yellow}
+format-connected-foreground = ${colors.background-opaque}
+
+label-disconnected-font = 8
+format-disconnected-background = ${colors.yellow}
+format-disconnected-foreground = ${colors.background-opaque}
+
+;udspeed-minwidth = 4
+format-connected-padding = 1
+format-disconnected-padding = 1
+
+accumulate-stats = true
+
+unknown-as-up = true
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+label-connected = %downspeed:0:8%
+label-connected-padding-left = 2
+label-disconnected = N/A
+label-disconnected-padding-left = 1
+
+[module/filesystem]
+type = internal/fs
+
+interval = 120
+
+format-mounted-prefix = 
+mount-0 = /
+
+format-mounted-background = ${colors.onedark-red}
+format-mounted-foreground = ${colors.background-opaque}
+
+label-mounted-font = 8
+format-mounted-padding = 1
+label-mounted-padding-left = 2
+
+label-mounted = %free:0:3%G
+
+[module/osname]
+type = custom/text
+
+content-foreground = #368BD0
+content = " %{F#C4C9D2}arch%{F-}%{F#368BD0}linux%{F-}"
+content-font = 5
+content-padding = 1
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+use-actual-brightness = true
+enable-scroll = true
+
+format = <label>
+format-padding = 1
+format-prefix = 
+
+format-background = ${colors.mlm-2}
+format-prefix-foreground = ${colors.background-opaque}
+format-foreground = ${colors.background-opaque}
+
+label = %percentage:0:3%%
+label-padding-left = 2
+label-font = 8
+
+[module/xwindow]
+type = internal/xwindow
+
+format = <label>
+format-padding = 1
+
+label = %title:0:40:...%
+label-font = 8
+label-foreground = ${colors.offwhite}
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = I;
+ws-icon-1 = II;爵
+ws-icon-2 = III;
+ws-icon-3 = IV;%{T10}ﭮ%{T-}
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-6 = VII;
+ws-icon-7 = VIII;漣
+ws-icon-default = 
+
+label-focused-font = 12
+label-occupied-font = 12
+label-urgent-font = 12
+label-empty-font = 12
+
+format = <label-state>
+
+;label-focused = %icon%
+label-focused = 
+;label-focused-background = ${colors.onedark-blue}
+;label-focused-foreground = ${colors.background}
+label-focused-foreground = ${colors.onedark-green}
+label-focused-padding-right = 1
+
+;label-occupied = %icon%
+label-occupied = 
+label-occupied-foreground = ${colors.onedark-green}
+label-occupied-padding-right = 1
+
+;label-urgent = %icon%
+label-urgent = 
+label-urgent-foreground = ${colors.onedark-red}
+label-urgent-padding-right = 1
+
+;label-empty = %icon%
+label-empty = 
+;label-empty-foreground = ${colors.offwhite}
+label-empty-foreground = #7792A1BE
+label-empty-padding-right = 1
+
+format-padding = 1
+
+[module/mpd]
+type = internal/mpd
+format-online = <bar-progress> <label-song>
+format-foreground = ${colors.offwhite}
+label-song-padding = 1
+label-song-foreground = ${colors.onedark-blue}
+label-song = %title% - %artist%
+label-font = 11
+
+icon-play = 契
+icon-pause = 
+icon-stop = 栗
+icon-prev = 玲
+icon-next = 怜
+
+icon-play-font = 10
+icon-pause-font = 10
+icon-stop-font = 10
+icon-prev-font = 10
+icon-next-font = 10
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+bar-progress-width = 12
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+bar-progress-spacing = 8
+
+[module/date]
+type = internal/date
+interval = 5
+
+format-foreground = ${colors.offwhite}
+label-font = 9
+format-padding = 0
+
+format-prefix-foreground = ${colors.background}
+
+time = %l:%M %p
+label = %time%
+label-padding-left = 0
+
+[module/date2]
+type = internal/date
+interval = 120
+
+format-background = ${colors.onedark-magenta}
+format-foreground = ${colors.background-opaque}
+format-prefix-foreground = ${colors.background-opaque}
+
+format-padding = 1
+label-font = 8
+
+format-prefix = 
+
+time = %a %m/%d
+label = %time%
+label-padding-left = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+format-volume-prefix = "墳"
+format-volume-padding = 1
+
+format-volume-background = ${colors.mlm-1}
+format-volume-prefix-foreground = ${colors.background-opaque}
+format-volume-foreground = ${colors.background}
+
+format-muted-background = ${colors.mlm-1}
+format-muted-prefix-foreground = ${colors.background-opaque}
+format-muted-foreground = ${colors.background}
+format-muted-padding = 1
+
+
+label-volume = %percentage:0:3%
+label-volume-padding-left = 2
+label-volume-font = 8
+
+format-muted-prefix = 婢
+
+label-muted = "N/A "
+label-muted-font = 8
+label-muted-padding-left = 2
+
+[module/power]
+type = custom/text
+
+format-foreground = ${colors.offwhite}
+
+content = 
+content-padding = 1
+;content-margin = 1
+
+format-font = 8
+
+click-left = clearine
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+
+; vim:ft=dosini
