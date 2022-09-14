@@ -19,7 +19,7 @@ do
         break
     fi
     echo "Removing up pre-existing dot files."
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} rm -rvf {}
+    config checkout 2>&1 | grep -E "\s+\." | awk {'print $1'} | xargs -I{} rm -rvf {}
     config checkout &> /dev/null
 done
 
