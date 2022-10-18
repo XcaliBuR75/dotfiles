@@ -133,7 +133,7 @@ myStartupHook = do
   spawn "killall trayer"  -- kill current trayer on each restart
 
   spawnOnce "lxsession"
-  spawnOnce "picom"
+  spawnOnce "picom --experimental-backends"
   spawnOnce "nm-applet"
   spawnOnce "volumeicon"
   spawn "/usr/bin/emacs --daemon" -- emacs daemon for the emacsclient
