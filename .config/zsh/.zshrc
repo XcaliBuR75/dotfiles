@@ -97,10 +97,8 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^a' 'bc -lq\n'
 
-#bindkey -s '\ea' 'cd "$(dirname "$(fzf --preview "bat --color=always --style=plain --line-range=:500 {}")")"\n'
-#bindkey -s '\ep' ' $(fzf --preview "bat --color=always --style=plain --line-range=:500 {}")'
-bindkey -s '\ea' 'cat $(fzf --reverse --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
-bindkey -s '\es' 'v $(fzf --reverse --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
+bindkey -s '\ea' 'cat $(fzf --reverse --pointer="" --color=pointer:#BAC2DE --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
+bindkey -s '\es' 'v $(fzf --reverse --pointer="" --color=pointer:#A6E3A1 --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 bindkey '^[[P' delete-char
@@ -115,49 +113,50 @@ source ~/.config/fzf/key-bindings.zsh 2>/dev/null
 # zsh autosuggestions plugin instalation
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-SPACESHIP_USER_SHOW=false
-SPACESHIP_HOST_SHOW=false
-SPACESHIP_GIT_SHOW=false
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_HG_SHOW=false
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_ELM_SHOW=false
-SPACESHIP_ELIXIR_SHOW=false
-SPACESHIP_XCODE_SHOW_LOCAL=false
-SPACESHIP_SWIFT_SHOW_LOCAL=false
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_RUST_SHOW=false
-SPACESHIP_JULIA_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_DOCKER_CONTEXT_SHOW=false
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_PYENV_SHOW=false
-SPACESHIP_DOTNET_SHOW=false
-SPACESHIP_EMBER_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_JOBS_SHOW=false
+# SPACESHIP_USER_SHOW=false
+# SPACESHIP_HOST_SHOW=false
+# SPACESHIP_GIT_SHOW=false
+# SPACESHIP_PROMPT_ADD_NEWLINE=false
+# SPACESHIP_PROMPT_SEPARATE_LINE=false
+# SPACESHIP_CHAR_SYMBOL=❯
+# SPACESHIP_CHAR_SUFFIX=" "
+# SPACESHIP_HG_SHOW=false
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_NODE_SHOW=false
+# SPACESHIP_RUBY_SHOW=false
+# SPACESHIP_ELM_SHOW=false
+# SPACESHIP_ELIXIR_SHOW=false
+# SPACESHIP_XCODE_SHOW_LOCAL=false
+# SPACESHIP_SWIFT_SHOW_LOCAL=false
+# SPACESHIP_GOLANG_SHOW=false
+# SPACESHIP_PHP_SHOW=false
+# SPACESHIP_RUST_SHOW=false
+# SPACESHIP_JULIA_SHOW=false
+# SPACESHIP_DOCKER_SHOW=false
+# SPACESHIP_DOCKER_CONTEXT_SHOW=false
+# SPACESHIP_AWS_SHOW=false
+# SPACESHIP_CONDA_SHOW=false
+# SPACESHIP_VENV_SHOW=false
+# SPACESHIP_PYENV_SHOW=false
+# SPACESHIP_DOTNET_SHOW=false
+# SPACESHIP_EMBER_SHOW=false
+# SPACESHIP_KUBECONTEXT_SHOW=false
+# SPACESHIP_TERRAFORM_SHOW=false
+# SPACESHIP_TERRAFORM_SHOW=false
+# SPACESHIP_VI_MODE_SHOW=false
+# SPACESHIP_JOBS_SHOW=false
 
 # Initialize spaceship prompt
 #autoload -U promptinit; promptinit
 #prompt spaceship
+#source "$XDG_CONFIG_HOME/zsh/spaceship/spaceship.zsh"
 
 # Case Insensitive Tab Completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 ## DTOS RANDOM COLOR SCRIPT ##
-colorscript random
+#colorscript random
 
 ## Replace zsh's default completion selection menu with fzf!
 source ~/.config/fzf-tab/fzf-tab.plugin.zsh
