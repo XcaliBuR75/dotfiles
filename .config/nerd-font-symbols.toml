@@ -1,5 +1,17 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = false
 scan_timeout = 10
+
+[character]
+# success_symbol = "[❯](purple)"
+# error_symbol = "[❯](red)"
+# vicmd_symbol = "[❮](green)"
+success_symbol = '[➜](bold purple)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = '[✗](bold red)'      # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+vicmd_symbol = "[❮](green)"
+
 
 [aws]
 symbol = "  "
