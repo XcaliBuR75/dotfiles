@@ -97,8 +97,8 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^a' 'bc -lq\n'
 
-bindkey -s '\ea' 'cat $(fzf --reverse --pointer="" --color=pointer:#BAC2DE --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
-bindkey -s '\es' 'v $(fzf --reverse --pointer="" --color=pointer:#A6E3A1 --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
+#bindkey -s '\ea' 'cat $(fzf --reverse --pointer="" --color=pointer:#BAC2DE --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
+#bindkey -s '\es' 'v $(fzf --reverse --pointer="" --color=pointer:#A6E3A1 --border rounded --height=50% --cycle --bind 'tab:toggle-down,btab:toggle-up' --preview "bat --color=always --style=plain --line-range=:500 {}")\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 bindkey '^[[P' delete-char

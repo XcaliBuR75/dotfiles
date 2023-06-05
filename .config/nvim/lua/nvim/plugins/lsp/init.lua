@@ -10,7 +10,7 @@ local servers = {
     'graphql',
     'html',
     'jsonls',
-    'sumneko_lua',
+    'lua_ls',
     'pyright',
     'rust_analyzer',
     'tsserver',
