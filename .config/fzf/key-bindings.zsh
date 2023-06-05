@@ -99,6 +99,65 @@ bindkey -M emacs '\ed' fzf-file1-widget
 bindkey -M vicmd '\ed' fzf-file1-widget
 bindkey -M viins '\ed' fzf-file1-widget
 
+# ALT-A - Concatenate files and print on the standard output
+__fsel2() {
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#BAC2DE  --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+}
+
+fzf-file2-widget() {
+LBUFFER="cat ${LBUFFER}$(__fsel2)"
+  zle accept-line
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-file2-widget
+bindkey -M emacs '\ea' fzf-file2-widget
+bindkey -M vicmd '\ea' fzf-file2-widget
+bindkey -M viins '\ea' fzf-file2-widget
+
+# ALT-S - Concatenate files and print on the standard output
+__fsel3() {
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1  --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+}
+
+fzf-file3-widget() {
+LBUFFER="v ${LBUFFER}$(__fsel3)"
+  zle accept-line
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-file3-widget
+bindkey -M emacs '\es' fzf-file3-widget
+bindkey -M vicmd '\es' fzf-file3-widget
+bindkey -M viins '\es' fzf-file3-widget
 
 # ALT-O - cd into the selected directory
 fzf-cd-widget() {
