@@ -81,7 +81,7 @@ import XMonad.Util.SpawnOnce
       -- SolarizedDark
       -- SolarizedLight
       -- TomorrowNight
-import Colors.Dracula
+import Colors.DoomOne
 
 toggleFloat :: Window -> X ()
 toggleFloat w =
